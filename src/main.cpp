@@ -1,5 +1,6 @@
 #include<iostream>
 #include "Order.hpp"
+#include "OrderBook.hpp"
 
 int main()
 {
@@ -10,7 +11,19 @@ int main()
 
     std::cout<< OrderTwo.id << " " << static_cast<int>(OrderTwo.side) <<" " << static_cast<int>(OrderTwo.type)
     << " " << OrderTwo.price << " " << OrderTwo.quantity << " " << OrderTwo.timestamp << std::endl;
-    
 
+    OrderBook orderBook;
+    orderBook.addLimitOrder( {1, Side::BID, Type::LIMIT, 109.7, 3, 2000});
+    orderBook.addLimitOrder( {2, Side::BID, Type::LIMIT, 111.5, 7, 2000});
+    orderBook.addLimitOrder( {3, Side::BID, Type::LIMIT, 105.2, 10, 2000});
+    orderBook.addLimitOrder( {4, Side::BID, Type::LIMIT, 103.5, 15, 2000});
+    orderBook.addLimitOrder( {5, Side::BID, Type::LIMIT, 107.0, 6, 2000});
 
+    orderBook.addLimitOrder( {6, Side::ASK, Type::LIMIT, 111.8, 10, 2000});
+    orderBook.addLimitOrder( {7, Side::ASK, Type::LIMIT, 112.0, 6, 2000});
+    orderBook.addLimitOrder( {8, Side::ASK, Type::LIMIT, 117.5, 4, 2000});
+    orderBook.addLimitOrder( {9, Side::ASK, Type::LIMIT, 130.0, 15, 2000});
+    orderBook.addLimitOrder( {10, Side::ASK, Type::LIMIT, 115.0, 50, 2000});
+
+    orderBook.printBook(3);
 }
